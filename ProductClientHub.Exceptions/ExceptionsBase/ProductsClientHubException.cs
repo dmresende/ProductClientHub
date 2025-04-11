@@ -1,4 +1,6 @@
-﻿namespace ProductClientHub.Exceptions.ExceptionsBase
+﻿using System.Net;
+
+namespace ProductClientHub.Exceptions.ExceptionsBase
 {
     public abstract class ProductsClientHubException : SystemException
     {
@@ -7,6 +9,8 @@
         }
 
         public abstract List<string> GetErros();
+
+        public abstract HttpStatusCode GetHttpStatusCode();
 
     }
 }
