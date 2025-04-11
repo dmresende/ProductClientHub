@@ -6,8 +6,13 @@
 
         public ResponseErrorMessagesJson(string message)
         {
-            //forma simplificada
+            // simplificada
             Errors = [message];
+        }
+
+        public ResponseErrorMessagesJson(List<string>  message)
+        {
+            Errors = message;
         }
     }
 }
