@@ -2,6 +2,7 @@
 using ProductClientHub.API.UseCases.Clients.Register;
 using ProductClientHub.Communication.Requests;
 using ProductClientHub.Communication.Responses;
+using ProductClientHub.Exceptions.ExceptionsBase;
 
 namespace ProductClientHub.API.Controllers
 {
@@ -20,11 +21,11 @@ namespace ProductClientHub.API.Controllers
                 response.Execute(request);
 
                 return Created(string.Empty, response);
-
             }
-            catch (ArgumentException ex)
+            catch (ProductsClientHubException ex)
             {
-                return BadRequest(new ResponseErrorMessagesJson(ex.Message));
+                var erros = ex.GetErros();
+                return BadRequest(new ResponseErrorMessagesJson(erros));
             }
             catch 
             {
